@@ -24803,10 +24803,10 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./src/components/Hello.tsx":
-/*!**********************************!*\
-  !*** ./src/components/Hello.tsx ***!
-  \**********************************/
+/***/ "./src/components/inline.tsx":
+/*!***********************************!*\
+  !*** ./src/components/inline.tsx ***!
+  \***********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -24821,16 +24821,66 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(__webpack_require__(/*! react */ "./node_modules/_react@16.8.6@react/index.js"));
-function Hello() {
-    const [count, setCount] = react_1.useState(0);
-    return (react_1.default.createElement("div", null,
-        react_1.default.createElement("p", null,
-            "You clicked ",
-            count,
-            " times"),
-        react_1.default.createElement("button", { onClick: () => setCount(count + 1) }, "Click me")));
+function Text(props) {
+    // 初始化
+    const [data, setData] = react_1.useState(props.data);
+    const [style, setStyle] = react_1.useState(props.style);
+    // 事件处理
+    // 输出
+    return (react_1.default.createElement("span", { className: "text", style: style }, data.text));
 }
-exports.Hello = Hello;
+exports.Text = Text;
+function Link(props) {
+    // 初始化
+    const [data, setData] = react_1.useState(props.data);
+    const [style, setStyle] = react_1.useState(props.style);
+    // 事件处理
+    function click() {
+        console.log("Clicked!");
+    }
+    // 输出
+    return (react_1.default.createElement("span", { className: "link", style: style, onClick: click }, data.text));
+}
+exports.Link = Link;
+function Button(props) {
+    // 初始化
+    const [data, setData] = react_1.useState(props.data);
+    const [style, setStyle] = react_1.useState(props.style);
+    // 事件处理
+    function click() {
+        console.log("Clicked!");
+    }
+    // 输出
+    return (react_1.default.createElement("span", { className: "button", style: style, onClick: click }, data.text));
+}
+exports.Button = Button;
+function Rate(props) {
+    // 初始化
+    const [data, setData] = react_1.useState(props.data);
+    const [style, setStyle] = react_1.useState(props.style);
+    let itemList = [];
+    for (let i = 0; i < data.item.length; i++) {
+        const element = data.item[i];
+        itemList.push(react_1.default.createElement("span", { key: i, onClick: () => { click(element); } }, element));
+    }
+    // 事件处理
+    function click(value) {
+        console.log(value);
+    }
+    // 输出
+    return (react_1.default.createElement("span", { className: "rate", style: style }, itemList));
+}
+exports.Rate = Rate;
+function Progress(props) {
+    // 初始化
+    const [data, setData] = react_1.useState(props.data);
+    const [style, setStyle] = react_1.useState(props.style);
+    // 事件处理
+    // 输出
+    return (react_1.default.createElement("span", { className: "progress", style: style },
+        react_1.default.createElement("span", { className: "bar", style: style })));
+}
+exports.Progress = Progress;
 
 
 /***/ }),
@@ -24850,8 +24900,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(__webpack_require__(/*! react */ "./node_modules/_react@16.8.6@react/index.js"));
 const react_dom_1 = __importDefault(__webpack_require__(/*! react-dom */ "./node_modules/_react-dom@16.8.6@react-dom/index.js"));
-const Hello_1 = __webpack_require__(/*! ./components/Hello */ "./src/components/Hello.tsx");
-react_dom_1.default.render(react_1.default.createElement(Hello_1.Hello, null), document.getElementById("root"));
+const inline_1 = __webpack_require__(/*! ./components/inline */ "./src/components/inline.tsx");
+react_dom_1.default.render(react_1.default.createElement("div", null,
+    react_1.default.createElement(inline_1.Text, { data: { text: "123" }, style: { color: "#f00" } }),
+    react_1.default.createElement(inline_1.Link, { data: { text: "123" }, style: { color: "#f00" } }),
+    react_1.default.createElement(inline_1.Button, { data: { text: "123" }, style: { color: "#f00" } }),
+    react_1.default.createElement(inline_1.Rate, { data: { item: ["一", "二", "三"] }, style: { color: "#f00" } }),
+    react_1.default.createElement(inline_1.Progress, { data: { now: 3, max: 5 }, style: { "backgroundColor": "#f00", width: 100 + "px" } })), document.getElementById("root"));
 
 
 /***/ })
