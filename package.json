@@ -3,6 +3,7 @@
   "version": "0.1.0-190713",
   "description": "",
   "main": "index.js",
+  "types": "",
   "scripts": {
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,14 +19,14 @@
   },
   "homepage": "https://github.com/miswanting/span-charm-react#readme",
   "devDependencies": {
-    "@types/react": "^16.8.23",
-    "@types/react-dom": "^16.8.4",
-    "awesome-typescript-loader": "^5.2.1",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "source-map-loader": "^0.2.4",
-    "typescript": "^3.5.3",
-    "webpack": "^4.35.3",
-    "webpack-cli": "^3.3.5"
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "awesome-typescript-loader": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "source-map-loader": "latest",
+    "typescript": "latest",
+    "webpack": "latest",
+    "webpack-cli": "latest"
   }
 }
